@@ -25,8 +25,8 @@ tray.setVisible(True)
  
 # Creating the options
 menu = QMenu()
-option1 = QAction("Frei")
-option2 = QAction("Am Telefon")
+option1 = QAction(iconGreen, "Frei")
+option2 = QAction(iconRed, "Am Telefon")
 option1.triggered.connect(lambda: Green(tray, iconGreen))
 option2.triggered.connect(lambda: Red(tray, iconRed))
 menu.addAction(option1)
@@ -36,11 +36,11 @@ menu.addSeparator()
 
 # Farben
 submenu = QMenu("Farben")
-suboption1 = QAction("Grün")
-suboption2 = QAction("Rot")
-suboption3 = QAction("Blau")
-suboption4 = QAction("Gelb")
-suboption5 = QAction("Weiß")
+suboption1 = QAction(iconGreen, "Grün")
+suboption2 = QAction(iconRed, "Rot")
+suboption3 = QAction(iconBlue, "Blau")
+suboption4 = QAction(iconYellow, "Gelb")
+suboption5 = QAction(iconWhite, "Weiß")
 suboption1.triggered.connect(lambda: Green(tray, iconGreen))
 suboption2.triggered.connect(lambda: Red(tray, iconRed))
 suboption3.triggered.connect(lambda: Blue(tray, iconBlue))
@@ -56,7 +56,7 @@ menu.addMenu(submenu)
 menu.addSeparator()  
 
 # Aus
-optionOff = QAction("Aus")
+optionOff = QAction(iconOff, "Aus")
 menu.addAction(optionOff)
 optionOff.triggered.connect(lambda: Off(tray, iconOff))
 
