@@ -1,0 +1,8 @@
+busylight-menu (1.4.0) focal; urgency=low
+
+  * created ppa version
+  * edited launch configuration to show busylight-menu and not python as process
+  * Bug fixed:
+  * menu somtimes stopped unexpected
+
+ -- IT und Entwicklung - FG <kontakt@it-und-entwicklung-fg.de>  Wed, 29 Sep 2021 18:06:19 +0200

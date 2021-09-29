@@ -1,0 +1,14 @@
+#!/bin/bash
+# This `DEBIAN/postinst` script is run post-installation
+echo "Create links"
+ln -s /usr/share/busylight-menu/Menu.py /usr/bin/busylight-menu
+chmod a+rx /usr/share/busylight-menu/Menu.py
+chmod a+rx /usr/bin/busylight-menu
+echo "Setup Autostart"
+touch /etc/xdg/autostart/busylight-menu.desktop
+echo '[Desktop Entry]
+Version=1.0
+Name=Busylight Menu
+Exec=/usr/bin/busylight-menu
+Terminal=false
+Type=Application' > /etc/xdg/autostart/busylight-menu.desktop

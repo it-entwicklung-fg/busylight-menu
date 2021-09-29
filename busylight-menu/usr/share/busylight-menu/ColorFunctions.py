@@ -16,7 +16,7 @@ def Green(tray, icon):
   g = 255
   b = 0
   if run == False:
-    Color()
+    threading.Timer(0.5, Color).start()
 
 def Red(tray, icon):
   global repeat, r, g, b, run
@@ -26,7 +26,7 @@ def Red(tray, icon):
   g = 0
   b = 0
   if run == False:
-    Color()
+    threading.Timer(0.5, Color).start()
 
 def Blue(tray, icon):
   global repeat, r, g, b, run
@@ -36,7 +36,7 @@ def Blue(tray, icon):
   g = 0
   b = 255
   if run == False:
-    Color()
+    threading.Timer(0.5, Color).start()
 
 def Yellow(tray, icon):
   global repeat, r, g, b, run
@@ -46,7 +46,7 @@ def Yellow(tray, icon):
   g = 255
   b = 0
   if run == False:
-    Color()
+    threading.Timer(0.5, Color).start()
     
 def White(tray, icon):
   global repeat, r, g, b, run
@@ -56,7 +56,7 @@ def White(tray, icon):
   g = 255
   b = 255
   if run == False:
-    Color()
+    threading.Timer(0.5, Color).start()
 
 def Off(tray, icon):
   global repeat, r, g, b, run
