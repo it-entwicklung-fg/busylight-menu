@@ -1,4 +1,4 @@
-busylight-menu (1.4.0) focal; urgency=low
+busylight-menu (1.4.1) focal; urgency=low
 
   * created ppa version
   * edited launch configuration to show busylight-menu and not python as process

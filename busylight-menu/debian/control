@@ -2,9 +2,11 @@ Source: busylight-menu
 Section: misc
 Priority: optional
 Maintainer: IT und Entwicklung - FG <kontakt@it-und-entwicklung-fg.de>
+Build-Depends: debhelper, dh-make
+build-arch: any
 
 Architecture: all
 Package: busylight-menu
-Version: 1.4.0
+Version: 1.4.1
 Depends: python3, libusb-1.0-0, python3-numpy, python3-pyqt5, python3-hid
 Description: A menu to control the busylight omega modell.
