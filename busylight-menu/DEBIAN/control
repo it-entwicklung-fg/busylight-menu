@@ -1,6 +1,0 @@
-Package: busylight-menu
-Version: 1.2
-Architecture: all
-Depends: python3, libusb-1.0-0, python3-numpy, python3-pyqt5, python3-hid
-Maintainer: IT und Entwicklung - FG <development@fabian-golf.de>
-Description: A menu to control the busylight omega modell.
