@@ -1,8 +1,6 @@
 #!/usr/bin/env python3
 import time
 import hid
-import colorsys
-import numpy as np
 
 class BusyLight(object):
     """
@@ -34,7 +32,6 @@ class BusyLight(object):
         self._vendor_id = vendor_id
         self._product_id = product_id
         self.buffer = None
-        self.playlist = []
 
         self.positions = {
             'r': 3,
@@ -109,13 +106,6 @@ class BusyLight(object):
         self.blue = b
         self.blink_rate = blink_rate
 
-    def add_to_playlist(self):
-        """
-        Add the current buffer to the playlist
-        """
-        self.update_buffer()
-        self.playlist.append(self.buffer.copy())
-
     def write(self, buff=None):
         """
         Method to write buffer to BusyLight
@@ -127,20 +117,6 @@ class BusyLight(object):
 
     def close(self):
         self.device.close()
-
-    def play_sequence(self, wait_time=1):
-        """
-        Method to run through a list of buffers to write.
-        """
-        
-        for buff in self.playlist:
-            self.write(buff=buff)
-            time.sleep(wait_time)
-            # self.update_buffer()
-
-        # clear the playlist once finished
-        self.reset_buffer()
-        self.playlist = []
 
 def clear_bl():
     """

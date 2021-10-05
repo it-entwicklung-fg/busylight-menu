@@ -1,8 +1,6 @@
-busylight-menu (1.4.1) focal; urgency=low
+busylight-menu (1.4.3) focal hirsute impish; urgency=low
 
-  * created ppa version
-  * edited launch configuration to show busylight-menu and not python as process
-  * Bug fixed:
-  * menu somtimes stopped unexpected
+  * Cleaned up code
+  * Removed unneeded dependencies
 
- -- IT und Entwicklung - FG <kontakt@it-und-entwicklung-fg.de>  Wed, 29 Sep 2021 18:06:19 +0200
+ -- IT und Entwicklung - FG <kontakt@it-und-entwicklung-fg.de>  Wed, 05 Oct 2021 17:28:00 +0200
