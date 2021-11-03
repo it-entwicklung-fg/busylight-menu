@@ -96,8 +96,8 @@ def quit():
 
 # Function to change color
 def color(icon=icons["off"], red=0, green=0, blue=0):
-    tray.setIcon(QIcon(icon))
     if os.path.isfile(config_file):
+            tray.setIcon(QIcon(icon))
             config.read(config_file)
             rgb = config["RGB"]
             rgb["red"] = red
