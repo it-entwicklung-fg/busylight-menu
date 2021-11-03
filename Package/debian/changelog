@@ -1,4 +1,4 @@
-busylight-menu (1.4.3) impish; urgency=low
+busylight-menu (1.5.0) impish; urgency=low
 
   * Cleaned up code
   * Removed unneeded dependencies
