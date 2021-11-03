@@ -1,23 +1,25 @@
 #!/usr/bin/python3
-import os
-from PyQt5.QtGui import * 
-from PyQt5.QtWidgets import * 
-
-scriptDir = os.path.dirname(os.path.realpath(__file__))
+import os.path
+from PyQt5.QtGui import *
+from PyQt5.QtWidgets import *
+from configparser import ConfigParser
 
 app = QApplication([])
 app.setQuitOnLastWindowClosed(False)
 
+config_file = "/var/cache/busylight/config.conf"
+config = ConfigParser()
+
 # Icons
 icons = {
-    "off" : QIcon(scriptDir + os.path.sep + 'icons' + os.path.sep + 'BL_Off.png'),
-    "red" : QIcon(scriptDir + os.path.sep + 'icons' + os.path.sep + 'BL_Red.png'),
-    "green" : QIcon(scriptDir + os.path.sep + 'icons' + os.path.sep + 'BL_Green.png'),
-    "blue" : QIcon(scriptDir + os.path.sep + 'icons' + os.path.sep + 'BL_Blue.png'),
-    "yellow" : QIcon(scriptDir + os.path.sep + 'icons' + os.path.sep + 'BL_Yellow.png'),
-    "white" : QIcon(scriptDir + os.path.sep + 'icons' + os.path.sep + 'BL_White.png')
+    "off" : QIcon.fromTheme("busylight-off"),
+    "red" : QIcon.fromTheme("busylight-red"),
+    "green" : QIcon.fromTheme("busylight-green"),
+    "blue" : QIcon.fromTheme("busylight-blue"),
+    "yellow" : QIcon.fromTheme("busylight-yellow"),
+    "white" : QIcon.fromTheme("busylight-white")
     }
-
+    
 # Adding item on the menu bar
 tray = QSystemTrayIcon()
 tray.setIcon(icons["off"])
@@ -76,20 +78,38 @@ tray.setContextMenu(menu)
 
 # Function to exit app
 def quit():
-    rgbfile = open("/var/cache/busylight/rgb", "w")
-    rgbfile.write("0\n")
-    rgbfile.write("0\n")
-    rgbfile.write("0\n")
-    rgbfile.close()
+    if os.path.isfile(config_file):
+            config.read(config_file)
+            rgb = config["RGB"]
+            rgb["red"] = 0
+            rgb["green"] = 0
+            rgb["blue"] = 0
+    else:
+        msg = QMessageBox()
+        msg.setIcon(QMessageBox.Critical)
+        msg.setText("Service not running")
+        msg.setInformativeText("The background servive that is needed is not running")
+        msg.setWindowTitle("ERROR")
+        msg.setStandardButtons(QMessageBox.Close)
+        msg.exec_()
     app.quit()
 
 # Function to change color
 def color(icon=icons["off"], red=0, green=0, blue=0):
     tray.setIcon(QIcon(icon))
-    rgbfile = open("/var/cache/busylight/rgb", "w")
-    rgbfile.write(str(red) + "\n")
-    rgbfile.write(str(green) + "\n")
-    rgbfile.write(str(blue) + "\n")
-    rgbfile.close()
+    if os.path.isfile(config_file):
+            config.read(config_file)
+            rgb = config["RGB"]
+            rgb["red"] = red
+            rgb["green"] = green
+            rgb["blue"] = blue
+    else:
+        msg = QMessageBox()
+        msg.setIcon(QMessageBox.Critical)
+        msg.setText("Service not running")
+        msg.setInformativeText("The background servive that is needed is not running")
+        msg.setWindowTitle("ERROR")
+        msg.setStandardButtons(QMessageBox.Close)
+        msg.exec_()
 
 app.exec_()

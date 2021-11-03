@@ -2,5 +2,3 @@
 # This `DEBIAN/postremove` script is run post-remove
 echo "Remove links"
 rm /usr/bin/busylight-menu
-echo "Setup Autostart"
-rm /etc/xdg/autostart/busylight-menu.desktop
