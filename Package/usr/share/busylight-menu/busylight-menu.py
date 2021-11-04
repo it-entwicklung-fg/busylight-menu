@@ -66,7 +66,7 @@ menu.addSeparator()
 # Aus
 optionOff = QAction(icons["off"], "Aus")
 menu.addAction(optionOff)
-optionOff.triggered.connect(lambda: color(optionOff.icon))
+optionOff.triggered.connect(lambda: color(icons["off"]))
 
 # To quit the app
 optionquit = QAction("Beenden")
@@ -79,11 +79,13 @@ tray.setContextMenu(menu)
 # Function to exit app
 def quit():
     if os.path.isfile(config_file):
-            config.read(config_file)
-            rgb = config["RGB"]
-            rgb["red"] = 0
-            rgb["green"] = 0
-            rgb["blue"] = 0
+        config.read(config_file)
+        rgb = config["RGB"]
+        rgb["red"] = "0"
+        rgb["green"] = "0"
+        rgb["blue"] = "0"
+        with open(config_file, "w+") as conf:
+            config.write(conf)
     else:
         msg = QMessageBox()
         msg.setIcon(QMessageBox.Critical)
@@ -97,12 +99,14 @@ def quit():
 # Function to change color
 def color(icon=icons["off"], red=0, green=0, blue=0):
     if os.path.isfile(config_file):
-            tray.setIcon(QIcon(icon))
-            config.read(config_file)
-            rgb = config["RGB"]
-            rgb["red"] = red
-            rgb["green"] = green
-            rgb["blue"] = blue
+        tray.setIcon(QIcon(icon))
+        config.read(config_file)
+        rgb = config["RGB"]
+        rgb["red"] = str(red)
+        rgb["green"] = str(green)
+        rgb["blue"] = str(blue)
+        with open(config_file, "w+") as conf:
+            config.write(conf)
     else:
         msg = QMessageBox()
         msg.setIcon(QMessageBox.Critical)
