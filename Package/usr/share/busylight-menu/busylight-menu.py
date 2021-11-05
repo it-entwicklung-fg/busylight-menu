@@ -12,19 +12,19 @@ config = ConfigParser()
 
 # Icons
 icons = {
-    "off" : QIcon.fromTheme("busylight-off"),
-    "red" : QIcon.fromTheme("busylight-red"),
-    "green" : QIcon.fromTheme("busylight-green"),
-    "blue" : QIcon.fromTheme("busylight-blue"),
-    "yellow" : QIcon.fromTheme("busylight-yellow"),
-    "white" : QIcon.fromTheme("busylight-white")
-    }
-    
+    "off": QIcon.fromTheme("busylight-off"),
+    "red": QIcon.fromTheme("busylight-red"),
+    "green": QIcon.fromTheme("busylight-green"),
+    "blue": QIcon.fromTheme("busylight-blue"),
+    "yellow": QIcon.fromTheme("busylight-yellow"),
+    "white": QIcon.fromTheme("busylight-white")
+}
+
 # Adding item on the menu bar
 tray = QSystemTrayIcon()
 tray.setIcon(icons["off"])
 tray.setVisible(True)
- 
+
 # Creating the options
 menu = QMenu()
 option1 = QAction(icons["green"], "Frei")
@@ -60,8 +60,8 @@ submenu.addAction(suboption3)
 submenu.addAction(suboption4)
 submenu.addAction(suboption5)
 menu.addMenu(submenu)
-  
-menu.addSeparator()  
+
+menu.addSeparator()
 
 # Aus
 optionOff = QAction(icons["off"], "Aus")
@@ -69,15 +69,16 @@ menu.addAction(optionOff)
 optionOff.triggered.connect(lambda: color(icons["off"]))
 
 # To quit the app
-optionquit = QAction("Beenden")
-optionquit.triggered.connect(lambda: quit())
-menu.addAction(optionquit)
-  
+option_exit = QAction("Beenden")
+option_exit.triggered.connect(lambda: quit_app())
+menu.addAction(option_exit)
+
 # Adding options to the System Tray
 tray.setContextMenu(menu)
 
+
 # Function to exit app
-def quit():
+def quit_app():
     if os.path.isfile(config_file):
         config.read(config_file)
         rgb = config["RGB"]
@@ -95,6 +96,7 @@ def quit():
         msg.setStandardButtons(QMessageBox.Close)
         msg.exec_()
     app.quit()
+
 
 # Function to change color
 def color(icon=icons["off"], red=0, green=0, blue=0):
@@ -115,5 +117,6 @@ def color(icon=icons["off"], red=0, green=0, blue=0):
         msg.setWindowTitle("ERROR")
         msg.setStandardButtons(QMessageBox.Close)
         msg.exec_()
+
 
 app.exec_()
