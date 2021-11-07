@@ -1,0 +1,12 @@
+__pycache__/
+busylight-menu_**.deb
+busylight-menu_**.build
+busylight-menu_**.buildinfo
+busylight-menu_**.changes
+busylight-menu_**.dsc
+busylight-menu_*.tar.gz
+busylight-menu.debhelper.log
+busylight-menu.substvars
+Package/debian/files
+Package/debian/.debhelper
+Package/debian/busylight-menu
