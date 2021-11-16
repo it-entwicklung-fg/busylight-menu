@@ -1,4 +1,4 @@
-busylight-menu (2.0.0) impish; urgency=low
+busylight-menu (2.0.0) focal; urgency=low
 
   * Cleaned up code
   * Removed unneeded dependencies
