@@ -7,7 +7,7 @@ from configparser import ConfigParser
 app = QApplication([])
 app.setQuitOnLastWindowClosed(False)
 
-config_file = "/var/cache/busylight/config.conf"
+config_file = "/var/local/busylight/config.conf"
 config = ConfigParser()
 
 # Icons
