@@ -1,0 +1,12 @@
+Source: busylight-menu
+Section: misc
+Priority: optional
+Maintainer: IT und Entwicklung - FG <kontakt@it-und-entwicklung-fg.de>
+Build-Depends: debhelper, dh-make
+build-arch: all
+
+Architecture: all
+Package: busylight-menu
+Version: 2.0.0
+Depends: busylight, python3, python3-pyqt5, qtwayland5
+Description: A menu to control the busylight omega modell.

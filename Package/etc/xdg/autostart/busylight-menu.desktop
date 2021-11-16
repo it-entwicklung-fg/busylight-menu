@@ -1,0 +1,11 @@
+[Desktop Entry]
+Version=1.0
+Encoding=UTF-8
+Type=Application
+Categories=Utility;
+
+Name=Busylight Menu
+Comment=Controll Busylight from Kuando.
+Exec=busylight-menu
+
+Icon=busylight-green

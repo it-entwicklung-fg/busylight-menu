@@ -1,0 +1,6 @@
+#!/bin/bash
+# This `DEBIAN/postinst` script is run post-installation
+echo "Create links"
+ln -s /usr/share/busylight-menu/busylight-menu.py /usr/bin/busylight-menu
+chmod a+rx /usr/share/busylight-menu/busylight-menu.py
+chmod a+rx /usr/bin/busylight-menu
