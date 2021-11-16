@@ -10,3 +10,4 @@ busylight-menu.substvars
 Package/debian/files
 Package/debian/.debhelper
 Package/debian/busylight-menu
+busylight-menu_*.ppa.upload
