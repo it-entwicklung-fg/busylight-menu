@@ -10,6 +10,19 @@ app.setQuitOnLastWindowClosed(False)
 config_file = "/var/local/busylight/config.conf"
 config = ConfigParser()
 
+# Get current Color
+if os.path.isfile(config_file):
+    config.read(config_file)
+    rgb = config["RGB"]
+    if len(rgb) >= 3:
+        red = int(rgb["red"]) == 255
+        green = int(rgb["green"]) == 255
+        blue = int(rgb["blue"]) == 255
+        if (0 <= red <= 255) and (0 <= green <= 255) and (0 <= blue <= 255):
+            color = "red" if red and not green  and not blue  else "green" if not red and green and not blue else "blue" if not red and not green and blue else "yellow" if red and green and not blue else "white" if red and green and blue else "off"
+    else:
+        color = "off"
+
 # Icons
 icons = {
     "off": QIcon.fromTheme("busylight-off"),
