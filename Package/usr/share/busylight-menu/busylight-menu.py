@@ -15,11 +15,16 @@ if os.path.isfile(config_file):
     config.read(config_file)
     rgb = config["RGB"]
     if len(rgb) >= 3:
-        red = int(rgb["red"]) == 255
-        green = int(rgb["green"]) == 255
-        blue = int(rgb["blue"]) == 255
+        red = int(rgb["red"])
+        green = int(rgb["green"])
+        blue = int(rgb["blue"])
+        print(green)
+        boolR = red == 255
+        boolG = green == 255
+        boolB = blue == 255
+        print(boolG)
         if (0 <= red <= 255) and (0 <= green <= 255) and (0 <= blue <= 255):
-            color = "red" if red and not green  and not blue  else "green" if not red and green and not blue else "blue" if not red and not green and blue else "yellow" if red and green and not blue else "white" if red and green and blue else "off"
+            color = "red" if boolR and not boolG  and not boolB  else "green" if not boolR and boolG and not boolB else "blue" if not boolR and not boolG and boolB else "yellow" if boolR and boolG and not boolB else "white" if boolR and boolG and boolB else "off"
     else:
         color = "off"
 
@@ -35,7 +40,7 @@ icons = {
 
 # Adding item on the menu bar
 tray = QSystemTrayIcon()
-tray.setIcon(icons["off"])
+tray.setIcon(icons[color])
 tray.setVisible(True)
 
 # Creating the options
