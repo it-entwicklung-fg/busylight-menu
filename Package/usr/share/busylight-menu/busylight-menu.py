@@ -7,8 +7,24 @@ from configparser import ConfigParser
 app = QApplication([])
 app.setQuitOnLastWindowClosed(False)
 
-config_file = "/var/local/busylight/config.conf"
+config_file = "/var/local/busylight/color.conf"
 config = ConfigParser()
+
+# Get current Color
+if os.path.isfile(config_file):
+    config.read(config_file)
+    rgb = config["RGB"]
+    if len(rgb) >= 3:
+        red = int(rgb["red"])
+        green = int(rgb["green"])
+        blue = int(rgb["blue"])
+        boolR = red == 255
+        boolG = green == 255
+        boolB = blue == 255
+        if (0 <= red <= 255) and (0 <= green <= 255) and (0 <= blue <= 255):
+            color = "red" if boolR and not boolG  and not boolB  else "green" if not boolR and boolG and not boolB else "blue" if not boolR and not boolG and boolB else "yellow" if boolR and boolG and not boolB else "white" if boolR and boolG and boolB else "off"
+    else:
+        color = "off"
 
 # Icons
 icons = {
@@ -22,7 +38,7 @@ icons = {
 
 # Adding item on the menu bar
 tray = QSystemTrayIcon()
-tray.setIcon(icons["off"])
+tray.setIcon(icons[color])
 tray.setVisible(True)
 
 # Creating the options

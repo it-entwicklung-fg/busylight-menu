@@ -1,6 +1,6 @@
-busylight-menu (2.0.0) focal; urgency=low
+busylight-menu (2.0.3) focal; urgency=low
 
-  * Cleaned up code
-  * Removed unneeded dependencies
+  * Menu now reades the color at startup, so the correct color is displayed
+  * Icons are now scalable
 
  -- IT und Entwicklung - FG <kontakt@it-und-entwicklung-fg.de>  Wed, 05 Oct 2021 17:28:00 +0200
