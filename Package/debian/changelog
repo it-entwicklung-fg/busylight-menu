@@ -1,5 +1,6 @@
 busylight-menu (2.0.2) focal; urgency=low
 
   * Menu now reades the color at startup, so the correct color is displayed
+  * Icons are now scalable
 
  -- IT und Entwicklung - FG <kontakt@it-und-entwicklung-fg.de>  Wed, 05 Oct 2021 17:28:00 +0200
