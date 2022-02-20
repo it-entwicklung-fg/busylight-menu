@@ -1,4 +1,0 @@
-#!/bin/bash
-# This `DEBIAN/postremove` script is run post-remove
-echo "Remove links"
-rm /usr/bin/busylight-menu

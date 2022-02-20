@@ -7,7 +7,7 @@ from configparser import ConfigParser
 app = QApplication([])
 app.setQuitOnLastWindowClosed(False)
 
-config_file = "/var/local/busylight/config.conf"
+config_file = "/var/local/busylight/color.conf"
 config = ConfigParser()
 
 # Get current Color
@@ -18,11 +18,9 @@ if os.path.isfile(config_file):
         red = int(rgb["red"])
         green = int(rgb["green"])
         blue = int(rgb["blue"])
-        print(green)
         boolR = red == 255
         boolG = green == 255
         boolB = blue == 255
-        print(boolG)
         if (0 <= red <= 255) and (0 <= green <= 255) and (0 <= blue <= 255):
             color = "red" if boolR and not boolG  and not boolB  else "green" if not boolR and boolG and not boolB else "blue" if not boolR and not boolG and boolB else "yellow" if boolR and boolG and not boolB else "white" if boolR and boolG and boolB else "off"
     else:
